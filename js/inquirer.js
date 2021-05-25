@@ -31,6 +31,24 @@ const addDepartmentQuestions = {
   message: "What is the name of the department?",
 };
 
+const addRoleQuestions = [
+    {
+        type: "input",
+        name: "roleTitle",
+        message: "What is the  title of the role?",
+      },
+      {
+        type: "input",
+        name: "roleSalary",
+        message: "What is the salary of the role?",
+      },
+      {
+        type: "input",
+        name: "roleDepartment",
+        message: "WWhat department does the role belong to?",
+      }
+]
+
 function addDepartment() {
   inquirer.prompt(addDepartmentQuestions).then((addDepartmentAnswers) => {
     console.log("Name of the department:", addDepartmentAnswers.departmentName);
