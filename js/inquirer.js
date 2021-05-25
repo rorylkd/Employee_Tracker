@@ -15,7 +15,7 @@ const addMenu = {
   type: "list",
   name: "addMenuChoices",
   message: "What would you like to add?",
-  choices: ["Add departments", "Add roles", "Add employees"],
+  choices: ["Add department", "Add role", "Add employee"],
 };
 
 const viewMenu = {
@@ -78,16 +78,29 @@ function addDepartment() {
   });
 }
 
+function addRole() {
+    inquirer.prompt(addRoleQuestions).then((addRoleAnswers) => {
+        console.log("Role answers:", addRoleAnswers);
+    })
+}
+
+function addEmployee() {
+    inquirer.prompt(addEmployeeQuestions).then((addEmployeeAnswers) => {
+        console.log("Employee answers:", addEmployeeAnswers);
+    })
+}
+
 function addPrompt() {
-  console.log("You have chosen to add departments, roles or employees");
   inquirer.prompt(addMenu).then((addMenuAnswers) => {
-    if (addMenuAnswers.addMenuChoices === "Add departments") {
-      console.log("You have chosen to add departments");
+    if (addMenuAnswers.addMenuChoices === "Add department") {
+      console.log("You have chosen to add a department");
       addDepartment();
-    } else if (addMenuAnswers.addMenuChoices === "Add roles") {
-      console.log("You have chosen to add roles");
-    } else if (addMenuAnswers.addMenuChoices === "Add employees") {
-      console.log("You have chosen to add employees");
+    } else if (addMenuAnswers.addMenuChoices === "Add role") {
+      console.log("You have chosen to add a role");
+      addRole();
+    } else if (addMenuAnswers.addMenuChoices === "Add employee") {
+      console.log("You have chosen to add an employee");
+      addEmployee();
     }
   });
 }
