@@ -18,6 +18,13 @@ const addMenu = {
   choices: ["Add departments", "Add roles", "Add employees"],
 };
 
+const viewMenu = {
+    type: "list",
+    name: "viewMenuChoices",
+    message: "What would you like to view?",
+    choices: ["View departments", "View roles", "View employees"],
+  };
+
 function addPrompt() {
   console.log("You have chosen to add departments, roles or employees");
   inquirer.prompt(addMenu).then((addMenuAnswers) => {
@@ -33,6 +40,15 @@ function addPrompt() {
 
 function viewPrompt() {
   console.log("You have chosen to view departments, roles or employees");
+  inquirer.prompt(viewMenu).then((viewMenuAnswers) => {
+    if (viewMenuAnswers.viewMenuChoices === "View departments") {
+      console.log("You have chosen to view departments");
+    } else if (viewMenuAnswers.viewMenuChoices === "View roles") {
+      console.log("You have chosen to view roles");
+    } else if (viewMenuAnswers.viewMenuChoices === "View employees") {
+      console.log("You have chosen to view employees");
+    }
+  });
 }
 
 function updatePrompt() {
