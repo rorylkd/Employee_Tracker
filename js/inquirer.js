@@ -19,17 +19,30 @@ const addMenu = {
 };
 
 const viewMenu = {
-    type: "list",
-    name: "viewMenuChoices",
-    message: "What would you like to view?",
-    choices: ["View departments", "View roles", "View employees"],
-  };
+  type: "list",
+  name: "viewMenuChoices",
+  message: "What would you like to view?",
+  choices: ["View departments", "View roles", "View employees"],
+};
+
+const addDepartmentQuestions = {
+  type: "input",
+  name: "departmentName",
+  message: "What is the name of the department?",
+};
+
+function addDepartment() {
+  inquirer.prompt(addDepartmentQuestions).then((addDepartmentAnswers) => {
+    console.log("Name of the department:", addDepartmentAnswers.departmentName);
+  });
+}
 
 function addPrompt() {
   console.log("You have chosen to add departments, roles or employees");
   inquirer.prompt(addMenu).then((addMenuAnswers) => {
     if (addMenuAnswers.addMenuChoices === "Add departments") {
       console.log("You have chosen to add departments");
+      addDepartment();
     } else if (addMenuAnswers.addMenuChoices === "Add roles") {
       console.log("You have chosen to add roles");
     } else if (addMenuAnswers.addMenuChoices === "Add employees") {
@@ -43,16 +56,20 @@ function viewPrompt() {
   inquirer.prompt(viewMenu).then((viewMenuAnswers) => {
     if (viewMenuAnswers.viewMenuChoices === "View departments") {
       console.log("You have chosen to view departments");
+      mainMenuPrompt();
     } else if (viewMenuAnswers.viewMenuChoices === "View roles") {
       console.log("You have chosen to view roles");
+      mainMenuPrompt();
     } else if (viewMenuAnswers.viewMenuChoices === "View employees") {
       console.log("You have chosen to view employees");
+      mainMenuPrompt();
     }
   });
 }
 
 function updatePrompt() {
   console.log("You have chosen to update employee roles");
+  mainMenuPrompt();
 }
 
 function mainMenuPrompt() {
