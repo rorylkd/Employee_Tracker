@@ -35,7 +35,7 @@ const addRoleQuestions = [
     {
         type: "input",
         name: "roleTitle",
-        message: "What is the  title of the role?",
+        message: "What is the title of the role?",
       },
       {
         type: "input",
@@ -45,7 +45,30 @@ const addRoleQuestions = [
       {
         type: "input",
         name: "roleDepartment",
-        message: "WWhat department does the role belong to?",
+        message: "What department does the role belong to?",
+      }
+]
+
+const addEmployeeQuestions = [
+    {
+        type: "input",
+        name: "employeeFirstName",
+        message: "What is the first name of the employee?",
+      },
+      {
+        type: "input",
+        name: "employeeLastName",
+        message: "What is the last name of the employee?",
+      },
+      {
+        type: "input",
+        name: "employeeRole",
+        message: "What role does the employee have?",
+      },
+      {
+        type: "input",
+        name: "employeeManager",
+        message: "What manager does the employee have?",
       }
 ]
 
