@@ -1,6 +1,6 @@
-CREATE DATABASE employee_Tracker_db
+CREATE DATABASE employee_Tracker_db;
 
-USE employee_Tracker_db
+USE employee_Tracker_db;
 
 CREATE TABLE IF NOT EXISTS department (
 id INTEGER(11) AUTO_INCREMENT NOT NULL,
@@ -15,7 +15,7 @@ salary DECIMAL(12, 2),
 PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS role (
+CREATE TABLE IF NOT EXISTS employee (
 id INTEGER(11) AUTO_INCREMENT NOT NULL,
 first_name VARCHAR(30),
 last_name VARCHAR(30),
