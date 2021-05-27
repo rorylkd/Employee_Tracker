@@ -1,5 +1,14 @@
 const inquirer = require("inquirer");
 const mysql2 = require("mysql2");
+const cTable = require("console.table");
+
+// console.table([{
+//     name: 'foo',
+//     age: 10
+// },
+// {name: 'bar',
+// age: 20}])
+// Checking if this works
 
 const connection = mysql2.createConnection({
   host: "localhost",
@@ -32,6 +41,10 @@ function addtoEmployeeDB(answers) {
         last_name: answers.employeeLastName,
       });
 }
+
+function viewDepartmentDB() {}
+function viewRoleDB() {}
+function viewEmployeeDB() {}
 
 const mainMenu = {
     type: "list",
