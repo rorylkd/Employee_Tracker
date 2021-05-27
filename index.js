@@ -1,6 +1,5 @@
-const inquirer = require('./js/inquirer')
+const inquirer = require("./js/inquirer");
 const mysql2 = require("mysql2");
-
 
 const connection = mysql2.createConnection({
   host: "localhost",
@@ -10,7 +9,15 @@ const connection = mysql2.createConnection({
   database: "employee_Tracker_db",
 });
 
-connection.connect((err) =>{
-    console.log("\nConnected as id:" + connection.threadId);
-    
-})
+connection.connect((err) => {
+  console.log("\nConnected as id:" + connection.threadId);
+});
+
+function addtoDepartmentDB() {
+  connection.query("INSERT INTO department SET ?", {
+    name: addDepartmentAnswers.departmentName,
+  });
+}
+
+
+function addtoEmployeeDB() {}
