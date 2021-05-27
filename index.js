@@ -19,5 +19,16 @@ function addtoDepartmentDB() {
   });
 }
 
+function addtoRoleDB() {
+    connection.query("INSERT INTO role SET ?", {
+      title: addRoleAnswers.roleTitle,
+      salary: addRoleAnswers.roleSalary
+    });
+  }
 
-function addtoEmployeeDB() {}
+function addtoEmployeeDB() {
+    connection.query("INSERT INTO employee SET ?", {
+        first_name: addEmployeeAnswers.employeeFirstName,
+        last_name: addEmployeeAnswers.employeeLastName,
+      });
+}
