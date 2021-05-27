@@ -31,7 +31,7 @@ function addtoDepartmentDB(answers) {
 function addtoRoleDB(answers) {
     connection.query("INSERT INTO role SET ?", {
       title: answers.roleTitle,
-      salary: answers.roleSalary
+      salary: answers.roleSalary,
     });
   }
 
