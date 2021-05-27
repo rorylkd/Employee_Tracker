@@ -6,7 +6,7 @@
 ## Table of Contents
 1. [Description](#description)
 2. [Usage](#usage)
-3. [Link to video tutorial](#video_tutorial): 
+3. [Link to video tutorial](#video_tutorial): https://drive.google.com/file/d/1AatLyEvpJ3AQ7LkzHt0imA5eZ8g4BnM6/view
 
 
   
