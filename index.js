@@ -2,14 +2,6 @@ const inquirer = require("inquirer");
 const mysql2 = require("mysql2");
 const cTable = require("console.table");
 
-// console.table([{
-//     name: 'foo',
-//     age: 10
-// },
-// {name: 'bar',
-// age: 20}])
-// Checking if this works
-
 const connection = mysql2.createConnection({
   host: "localhost",
   port: 3306,
@@ -18,6 +10,7 @@ const connection = mysql2.createConnection({
   database: "employee_Tracker_db",
 });
 
+//Starting connection
 connection.connect((err) => {
   console.log("\nConnected as id:" + connection.threadId);
 });
@@ -29,17 +22,62 @@ function addtoDepartmentDB(answers) {
 }
 
 function addtoRoleDB(answers) {
+
+  let departmentArray = [];
+
+
+  // Grabbing the values that are already in the department table so we can find out the department id of a role.
+  connection.query('SELECT id, name FROM department', (err, res) =>{
+    if (err) {console.error("ERROR", err)} else {
+        departmentArray.push(res);
+        console.log('departmentArray', departmentArray);
+    }
+})
+
     connection.query("INSERT INTO role SET ?", {
       title: answers.roleTitle,
       salary: answers.roleSalary,
+      // department_id: ???
     });
   }
 
 function addtoEmployeeDB(answers) {
+  
+  let roleArray = [];
+  let employeeArray = [];
+
+
+  //Grabbing values from role table to add the role_id to the employee table later
+  connection.query('SELECT id, title FROM role', (err, res) =>{
+    if (err) {console.error("ERROR", err)} else {
+        roleArray.push(res);
+        console.log('roleArray', roleArray);
+    }
+})
+
+//Grabbing values from employee table to add the manager_id to the employee table later
+connection.query('SELECT id, first_name, last_name FROM employee', (err, res) =>{
+  if (err) {console.error("ERROR", err)} else {
+      employeeArray.push(res);
+      console.log('employeeArray', employeeArray);
+  }
+})
+
+// I want to grab the values from the array's and use them to set the employee role ID and manager ID. Can't figure it out.
+
+  
+
+
     connection.query("INSERT INTO employee SET ?", {
         first_name: answers.employeeFirstName,
         last_name: answers.employeeLastName,
+        // role_id: ???
+        // manager_id: ???
       });
+
+
+
+
 }
 
 function viewDepartmentDB() {
