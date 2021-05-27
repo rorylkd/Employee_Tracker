@@ -8,6 +8,7 @@ const mainMenu = {
     "Add departments, roles or employees",
     "View departments, roles or employees",
     "Update employee roles",
+    "Exit"
   ],
 };
 
@@ -72,21 +73,28 @@ const addEmployeeQuestions = [
       }
 ]
 
+function exit() {
+  console.log("Exiting application");
+}
+
 function addDepartment() {
   inquirer.prompt(addDepartmentQuestions).then((addDepartmentAnswers) => {
     console.log("Name of the department:", addDepartmentAnswers.departmentName);
+    mainMenuPrompt();
   });
 }
 
 function addRole() {
     inquirer.prompt(addRoleQuestions).then((addRoleAnswers) => {
         console.log("Role answers:", addRoleAnswers);
+        mainMenuPrompt()
     })
 }
 
 function addEmployee() {
     inquirer.prompt(addEmployeeQuestions).then((addEmployeeAnswers) => {
         console.log("Employee answers:", addEmployeeAnswers);
+        mainMenuPrompt()
     })
 }
 
@@ -139,7 +147,7 @@ function mainMenuPrompt() {
     } else if (mainMenuAnswer.mainMenuChoices === "Update employee roles") {
       updatePrompt();
     } else {
-      console.log("Wrong answer");
+     exit();
     }
   });
 }
