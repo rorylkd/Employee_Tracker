@@ -5,5 +5,12 @@ USE employee_Tracker_db
 CREATE TABLE department (
 id INTEGER(11) AUTO_INCREMENT NOT NULL,
 name VARCHAR(30),
-PRIMARY KEY ('id')
+PRIMARY KEY (id)
+);
+
+CREATE TABLE role (
+id INTEGER(11) AUTO_INCREMENT NOT NULL,
+title VARCHAR(30) NULL,
+salary DECIMAL(12, 2) NULL,
+PRIMARY KEY (id)
 );
