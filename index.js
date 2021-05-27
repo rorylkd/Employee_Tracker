@@ -42,9 +42,27 @@ function addtoEmployeeDB(answers) {
       });
 }
 
-function viewDepartmentDB() {}
-function viewRoleDB() {}
-function viewEmployeeDB() {}
+function viewDepartmentDB() {
+    connection.query('SELECT * FROM department', (err, res) =>{
+        if (err) {console.error("ERROR", err)} else {
+            console.table('\n', res);
+        }
+    })
+}
+function viewRoleDB() {
+    connection.query('SELECT * FROM role', (err, res) =>{
+        if (err) {console.error("ERROR", err)} else {
+            console.table('\n', res);
+        }
+    })
+}
+function viewEmployeeDB() {
+    connection.query('SELECT * FROM employee', (err, res) =>{
+        if (err) {console.error("ERROR", err)} else {
+            console.table('\n', res);
+        }
+    })
+}
 
 const mainMenu = {
     type: "list",
@@ -169,12 +187,15 @@ const mainMenu = {
     inquirer.prompt(viewMenu).then((viewMenuAnswers) => {
       if (viewMenuAnswers.viewMenuChoices === "View departments") {
         console.log("You have chosen to view departments");
+        viewDepartmentDB();
         mainMenuPrompt();
       } else if (viewMenuAnswers.viewMenuChoices === "View roles") {
         console.log("You have chosen to view roles");
+        viewRoleDB();
         mainMenuPrompt();
       } else if (viewMenuAnswers.viewMenuChoices === "View employees") {
         console.log("You have chosen to view employees");
+        viewEmployeeDB();
         mainMenuPrompt();
       }
     });
